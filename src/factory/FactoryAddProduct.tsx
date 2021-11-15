@@ -1,33 +1,34 @@
 import { memo } from "react";
-import NameProductStep from "../components/molecules/NameStep";
+import { RequiredRule } from "../rules/AddProduct";
 import { EAddProductSteps } from "../typescript/interfaces/StepAddProduct";
+import { NameStep, PriceStep, DescStep, QuantityStep } from "../components/molecules/Steps/Steps";
 
 interface FactoryAddProductProps {
     step: EAddProductSteps
 }
 
-const FactoryAddProduct: React.FC<FactoryAddProductProps> = ({ step }) => {
-    switch (step) {
+const FactoryAddProduct: React.FC<FactoryAddProductProps> = (props) => {
+    switch (props.step) {
         case EAddProductSteps.NAME:
             return (
-                <NameProductStep name="name"/>
+                <NameStep />
             );
         
         case EAddProductSteps.DESCRIPTION:
             return (
-                <h1>DESCTRIPTION STEP</h1>
+                <DescStep />
             );
 
         case EAddProductSteps.PRICE:
             return (
-                <h1>PRICE STEP</h1>
+                <PriceStep />
             );
 
         case EAddProductSteps.QUANTITY:
             return (
-                <h1>QUANTITY STEP</h1>
+                <QuantityStep />
             );
     }
 }
 
-export default memo(FactoryAddProduct);
+export default FactoryAddProduct;

@@ -12,6 +12,7 @@ export interface InputFieldProps {
 }
 
 const InputField: React.FC<InputFieldProps> = (props) => {
+    
     return (
         <TextField 
             type={props.type}

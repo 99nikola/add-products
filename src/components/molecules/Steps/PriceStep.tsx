@@ -1,28 +1,25 @@
 import { Grid } from "@mui/material"
 import { memo } from "react";
-import ControlledInput from "./ControlledInput";
+import ControlledInput, { ControlledInputProps } from "../ControlledInput";
 import { useFormContext, useFormState } from "react-hook-form";
-import { RequiredRule } from "../../rules/AddProduct";
+import { RequiredRule } from "../../../rules/AddProduct";
 
-interface NameProductStepProps {
-    name: string
-}
 
-const NameProductStep: React.FC<NameProductStepProps> = (props) => {
+const PriceStep: React.FC<Omit<ControlledInputProps, "control" | "name">> = (props) => {
 
     const { control } = useFormContext();
 
     return (
         <Grid item>
-
             <ControlledInput
-                name={props.name}
+                {...props}
+                name="price"
                 control={control}
                 rules={RequiredRule}
+                type="number"
                 />
-
         </Grid>
     )
 }
 
-export default NameProductStep;
+export default memo(PriceStep);

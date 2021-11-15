@@ -2,10 +2,10 @@ import { memo } from "react";
 import { Control, Controller } from "react-hook-form"
 import InputField, { InputFieldProps } from "../atoms/InputField"
 
-interface ControlledInputProps extends InputFieldProps {
+export interface ControlledInputProps extends InputFieldProps {
     name: any,
     control: any,
-    rules?: any
+    rules?: any,
 }
 
 const ControlledInput: React.FC<ControlledInputProps> = ({ name, control, rules, ...rest }) => {
@@ -14,18 +14,20 @@ const ControlledInput: React.FC<ControlledInputProps> = ({ name, control, rules,
             name={name}
             control={control}
             rules={rules}
-            render={({ field, fieldState }) => (
-                <InputField 
-                    {...rest}
-                    value={field.value}
-                    onChange={field.onChange}
-                    error={Boolean(fieldState.error)}
-                    helperText={fieldState.error?.message || ''}
-                    />
-            )}  
+            render={({ field, fieldState }) => {
+                return (
+                    <InputField 
+                        {...rest}
+                        value={field.value}
+                        onChange={field.onChange}
+                        error={Boolean(fieldState.error)}
+                        helperText={fieldState.error?.message || ''}
+                        />
+                );
+            }}  
             />
             
     )
 }
 
-export default memo(ControlledInput);
+export default ControlledInput;

@@ -10,12 +10,7 @@ const steps = ['Name', 'Description', 'Price', 'Quantity'];
 const AddProductStepper = () => {
 
     const [activeStep, setActiveStep] = useState<EAddProductSteps>(EAddProductSteps.NAME);
-    // const formState = useFormState();
-    const { formState } = useFormContext();
-
-    useEffect(() => {
-        console.log(formState);
-    }, [formState]);
+    const formState = useFormState();
 
 
     const handleNext = () => {
@@ -40,17 +35,22 @@ const AddProductStepper = () => {
                 ))}
             </Stepper>
             {activeStep === steps.length ? (
-            <>
-                <Typography>
-                    All steps completed
-                </Typography>
-                <Grid container item direction="row">
+            <Grid container direction="row" justifyContent="center" margin={5}>
+                <Grid item padding={2}>
+                    <Button 
+                        text="Submit"
+                        type="submit"
+                        />
+                </Grid>
+
+                <Grid item padding={2}>
                     <Button 
                         onClick={handleReset}
                         text="Reset"
+                        color="secondary"
                         />
                 </Grid>
-            </>
+            </Grid>
             ) : (
             <Grid container direction="column" alignItems="center" padding={2}>
                 <Grid item padding={2}>

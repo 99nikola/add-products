@@ -1,20 +1,17 @@
-import { Grid, TextField } from "@mui/material";
-import { useEffect } from "react";
-import { Controller, FormProvider, useForm, useFormState } from "react-hook-form";
-import { RequiredRule } from "../../rules/AddProduct";
-import ControlledInput from "../molecules/ControlledInput";
+import { Grid } from "@mui/material";
+import { FormProvider, useForm } from "react-hook-form";
 import AddProductStepper from "../organisms/AddProductStepper";
 
 const AddProductForm = () => {
 
     const methods = useForm({ 
-        mode: "onSubmit",
+        mode: "all",
         reValidateMode: "onChange",
         defaultValues: {
           name: "",
-        //   desc: "",
-        //   price: 0,
-        //   quantity: 0,
+          desc: "",
+          price: "",
+          quantity: "",
         },
         criteriaMode: "firstError",
         shouldFocusError: true,
@@ -36,9 +33,6 @@ const AddProductForm = () => {
                         <AddProductStepper />
                     </Grid>
                 </Grid>
-
-                
-                <input type="submit" />
             </form>
         </FormProvider>
     )
