@@ -1,13 +1,12 @@
 import { memo } from "react";
-import { RequiredRule } from "../rules/AddProduct";
 import { EAddProductSteps } from "../typescript/interfaces/StepAddProduct";
 import { NameStep, PriceStep, DescStep, QuantityStep } from "../components/molecules/Steps/Steps";
 
-interface FactoryAddProductProps {
+interface FactoryAddProductStepsProps {
     step: EAddProductSteps
 }
 
-const FactoryAddProduct: React.FC<FactoryAddProductProps> = (props) => {
+const FactoryAddProductSteps: React.FC<FactoryAddProductStepsProps> = (props) => {
     switch (props.step) {
         case EAddProductSteps.NAME:
             return (
@@ -31,4 +30,4 @@ const FactoryAddProduct: React.FC<FactoryAddProductProps> = (props) => {
     }
 }
 
-export default FactoryAddProduct;
+export default memo(FactoryAddProductSteps);

@@ -1,4 +1,5 @@
 import { Button as MButton } from "@mui/material";
+import { memo } from "react";
 
 
 interface ButtonProps {
@@ -31,4 +32,4 @@ Button.defaultProps = {
     disabled: false
 }
 
-export default Button
+export default memo(Button);

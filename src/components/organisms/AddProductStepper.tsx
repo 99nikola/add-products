@@ -1,9 +1,9 @@
-import { Step, StepLabel, Stepper, Typography, Grid } from "@mui/material";
-import { useEffect, useState } from "react";
-import Button from "../atoms/Button";
-import FactoryAddProduct from "../../factory/FactoryAddProduct";
+import { Grid } from "@mui/material";
+import { memo, useState } from "react";
 import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct";
-import { useFormContext, useFormState } from "react-hook-form";
+import { useFormState } from "react-hook-form";
+import StepperLabel from "../molecules/StepperLabel";
+import FactoryContentOrFinish from "../../factory/FactoryContentOrFinish";
 
 const steps = ['Name', 'Description', 'Price', 'Quantity'];
 
@@ -27,57 +27,22 @@ const AddProductStepper = () => {
 
     return (
         <Grid container item direction="column" xs={12} padding={3}>
-            <Stepper activeStep={activeStep}>
-                {steps.map(label => (
-                    <Step key={label}>
-                        <StepLabel>{label}</StepLabel>
-                    </Step>
-                ))}
-            </Stepper>
-            {activeStep === steps.length ? (
-            <Grid container direction="row" justifyContent="center" margin={5}>
-                <Grid item padding={2}>
-                    <Button 
-                        text="Submit"
-                        type="submit"
-                        />
-                </Grid>
+            <StepperLabel 
+                steps={steps} 
+                activeStep={activeStep}
+                />
 
-                <Grid item padding={2}>
-                    <Button 
-                        onClick={handleReset}
-                        text="Reset"
-                        color="secondary"
-                        />
-                </Grid>
-            </Grid>
-            ) : (
-            <Grid container direction="column" alignItems="center" padding={2}>
-                <Grid item padding={2}>
-                    <FactoryAddProduct 
-                        step={activeStep}
-                        />
-                </Grid>
-                <Grid container item direction="row" justifyContent="center" alignItems="center">
-                    <Grid item margin={1}>
-                        <Button
-                            color="inherit"
-                            disabled={activeStep === 0}
-                            onClick={handleBack}
-                            text="Back"
-                            />
-                    </Grid>
-                    <Grid item margin={1}>
-                        <Button onClick={handleNext}
-                            disabled={!formState.isValid || formState.isValidating}
-                            text={activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                            />
-                    </Grid>
-                </Grid>
-            </Grid>
-            )}
+            <FactoryContentOrFinish 
+                isFinish={activeStep === steps.length}
+                handleReset={handleReset}
+                handleNext={handleNext}
+                handleBack={handleBack}
+                activeStep={activeStep}
+                disableNext={!formState.isValid || formState.isValidating}
+                finishOrNextText={activeStep === steps.length - 1 ? 'Finish' : 'Next'}
+                />
         </Grid>
     );
 }
 
-export default AddProductStepper;
+export default memo(AddProductStepper);
