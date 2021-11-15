@@ -1,7 +1,8 @@
 import { Grid } from "@mui/material"
 import { memo } from "react"
+import { FieldValues, UseFormReturn } from "react-hook-form"
 import FactoryAddProductSteps from "../../factory/FactoryAddProductSteps"
-import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct"
+import { EAddProductSteps, MultipleForm } from "../../typescript/interfaces/StepAddProduct"
 import Button from "../atoms/Button"
 
 export interface FormContentProps {
@@ -9,7 +10,8 @@ export interface FormContentProps {
     handleBack: React.MouseEventHandler<HTMLButtonElement>,
     handleNext: React.MouseEventHandler<HTMLButtonElement> 
     disableNext: boolean,
-    finishOrNextText: string
+    finishOrNextText: string,
+    forms: MultipleForm
 }
 
 const FormContent: React.FC<FormContentProps> = (props) => {
@@ -18,6 +20,7 @@ const FormContent: React.FC<FormContentProps> = (props) => {
             <Grid item padding={2}>
                 <FactoryAddProductSteps
                     step={props.activeStep}
+                    forms={props.forms}
                     />
             </Grid>
             <Grid container item direction="row" justifyContent="center" alignItems="center">

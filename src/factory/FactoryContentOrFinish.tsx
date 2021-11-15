@@ -3,7 +3,7 @@ import FormContent, { FormContentProps } from "../components/molecules/FormConte
 import ResetOrSubmit, { ResetOrSubmitProps } from "../components/molecules/ResetOrSubmit";
 
 interface FactoryContentOrFinishProps extends ResetOrSubmitProps, FormContentProps {
-    isFinish: boolean
+    isFinish: boolean,
 }
 
 const FactoryContentOrFinish: React.FC<FactoryContentOrFinishProps> = (props) => {
@@ -22,6 +22,7 @@ const FactoryContentOrFinish: React.FC<FactoryContentOrFinishProps> = (props) =>
                     handleNext={props.handleNext}
                     disableNext={props.disableNext}
                     finishOrNextText={props.finishOrNextText}
+                    forms={props.forms}
                     />
             );
     }
