@@ -1,8 +1,8 @@
-import './App.css';
+import AddProductForm from './components/templates/AddProductForm';
 
-function App() {
+const App = () => {
   return (
-    <h1>Hello</h1>
+    <AddProductForm />    
   );
 }
 
