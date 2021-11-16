@@ -18,7 +18,6 @@ interface RenderProp {
 }
 
 const InputController: React.FC<ControlledInputProps> = ({ name, control, rules, defaultValue, Componenet, ...rest }) => {
-
     const handleRender = (render: RenderProp) => {
         return (
             <Componenet 

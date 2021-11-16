@@ -1,16 +1,16 @@
 import { memo } from "react";
-import { EProduct } from "../typescript/interfaces/StepAddProduct";
+import { EProduct, EProductValues } from "../typescript/interfaces/StepAddProduct";
 import { NameStep, PriceStep, DescStep, QuantityStep, ImageStep } from "../components/molecules/Steps/Steps";
-import { FieldValues, UseFormReturn } from "react-hook-form";
+import { useProductFormStepperContext } from "../components/atoms/ProductFormStepperContext";
 
 interface FactoryAddProductStepsProps {
-    step: EProduct,
-    forms: Record<EProduct, UseFormReturn<FieldValues, object>>
+    step: EProductValues,
 }
 
 const FactoryAddProductSteps: React.FC<FactoryAddProductStepsProps> = (props) => {
-    
-    const form = props.forms[props.step];
+    const { getForm } = useProductFormStepperContext();
+
+    const form = getForm(props.step);
 
     switch (props.step) {
         case EProduct.NAME:

@@ -1,15 +1,15 @@
 import { Grid } from "@mui/material";
 import { memo } from "react";
-import { EProduct } from "../../typescript/interfaces/StepAddProduct";
+import { EProduct, EProductValues } from "../../typescript/interfaces/StepAddProduct";
 import { FieldValues, UseFormReturn, useFormState } from "react-hook-form";
 import StepperLabel from "../molecules/StepperLabel";
 import FormContent from "../molecules/FormContent";
+import { ProductForms } from "../templates/AddProductForm";
 
 interface AddProductsStepperProps {
-    activeStep: EProduct,
+    activeStep: EProductValues,
     setActiveStep: React.Dispatch<React.SetStateAction<EProduct>>,
     steps: Array<string>,
-    forms: Record<EProduct, UseFormReturn<FieldValues, object>>
 }
 
 const AddProductStepper: React.FC<AddProductsStepperProps> = (props) => {
@@ -30,7 +30,6 @@ const AddProductStepper: React.FC<AddProductsStepperProps> = (props) => {
                 activeStep={props.activeStep}
                 handleBack={handleBack}
                 finishOrNextText={props.activeStep === props.steps.length-1 ? 'Finish' : 'Next'}
-                forms={props.forms}
                 />
         </Grid>
     );

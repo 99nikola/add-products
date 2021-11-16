@@ -1,6 +1,4 @@
-import { TextFieldProps } from "@material-ui/core";
 import { StandardTextFieldProps, TextField } from "@mui/material";
-
 
 export interface InputFieldProps {
     variant?: "outlined" | "standard" | "filled"

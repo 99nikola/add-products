@@ -8,7 +8,7 @@ import { useMemo, useState } from "react"
 
 const ImageStep: React.FC<StepProps> = (props) => {
 
-    const [ images, setImages ] = useState<Array<string>>(props.form.getValues().image || []);
+    const [ images, setImages ] = useState<Array<string>>(props.form.getValues().image);
 
     const Images = useMemo(() => {
         return (
@@ -27,7 +27,7 @@ const ImageStep: React.FC<StepProps> = (props) => {
                 name="image"
                 rules={RequiredRule}
                 control={props.form.control}
-                defaultValue=""
+                defaultValue={[]}
                 Componenet={UploadInput}
                 />
             {Images}

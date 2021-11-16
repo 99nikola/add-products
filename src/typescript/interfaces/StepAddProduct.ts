@@ -6,7 +6,11 @@ export enum EProduct {
     IMAGE,
     PRICE,
     QUANTITY 
-}
+};
+
+export type EProductType = typeof EProduct;
+export type EProductKeys = keyof EProductType;
+export type EProductValues = EProductType[EProductKeys];
 
 export interface IProduct {
     name: string,
@@ -19,3 +23,5 @@ export interface IProduct {
 export interface StepProps extends Omit<ControlledInputProps, "control" | "name" | "Componenet"> {
     form: any
 }
+
+export type IProductFormSteps = keyof IProduct;

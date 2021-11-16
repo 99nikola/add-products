@@ -1,10 +1,10 @@
 import { Step, StepLabel, Stepper } from "@mui/material"
 import React, { memo, useCallback, useMemo } from "react"
-import { EProduct } from "../../typescript/interfaces/StepAddProduct"
+import { EProduct, EProductValues } from "../../typescript/interfaces/StepAddProduct"
 
 interface StepperLabelProps {
     steps: Array<string>
-    activeStep: EProduct,
+    activeStep: EProductValues,
     setActiveStep: React.Dispatch<React.SetStateAction<EProduct>>
 }
 
