@@ -28,7 +28,7 @@ export interface ProductForms {
     [EProduct.QUANTITY]: UseFormReturn<QuantityStepForm, object>;
 }
 
-const AddProductForm = () => {
+const AddProductForm: React.FC = () => {
 
     const [activeStep, setActiveStep] = useState<EProductValues>(EProduct.NAME);
 
