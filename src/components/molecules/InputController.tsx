@@ -1,4 +1,4 @@
-import { memo, useCallback } from "react";
+import React, { memo, useCallback } from "react";
 import { Controller, ControllerFieldState, ControllerRenderProps, FieldValues, UseFormStateReturn } from "react-hook-form"
 import InputField, { InputFieldProps } from "../atoms/InputField"
 
@@ -8,6 +8,7 @@ export interface ControlledInputProps extends InputFieldProps {
     rules?: any,
     defaultValue?: any
     Componenet: any,
+    setImages?: React.Dispatch<React.SetStateAction<Array<string>>>
 }
 
 interface RenderProp {

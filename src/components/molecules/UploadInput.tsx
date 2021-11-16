@@ -1,29 +1,20 @@
 import { InputLabel } from "@mui/material";
-import { useState } from "react";
+import React, { useState } from "react";
+import { fileToDataURL } from "../../utils/Utils";
 import { InputFieldProps } from "../atoms/InputField";
 
-const reader = new FileReader();
+interface UploadProps extends InputFieldProps {
+    setImages: React.Dispatch<React.SetStateAction<Array<string>>>
+}
 
-const UploadInput: React.FC<InputFieldProps> = (props) => {
+const UploadInput: React.FC<UploadProps> = (props) => {
 
-    const onChange = (e: any) => {
-        console.log(e.target.files, e.target.value);
-        const files = e.target.files;
-        // setValue(files);
+    const onChange = async (e: any) => {
+        const files = Array.prototype.slice.call(e.target.files);
 
-        reader.onloadend = () => {
-
-            const fileAsDataURL = reader.result;
-            if (!fileAsDataURL) 
-                return;
-            const fileAsBase64String = (fileAsDataURL as string)
-                .replace("data:", "")
-                .replace(/^.+,/, "");
-
-            props.onChange(fileAsBase64String);
-        }
-        reader.readAsDataURL(files[0]);
-
+        const images = (await Promise.all(files.map(fileToDataURL)) as string[]);
+        props.setImages(images);
+        props.onChange(images);
     }
 
     return (
