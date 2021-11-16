@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
 import { useForm, ValidationMode } from "react-hook-form";
-import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct";
+import { EProduct } from "../../typescript/interfaces/StepAddProduct";
 import AddProductStepper from "../organisms/AddProductStepper";
 
 const mode: {
@@ -12,28 +12,39 @@ const mode: {
     reValidateMode: "onChange"
 }
 
-const steps = ['Name', 'Description', 'Price', 'Quantity'];
+const steps = ['Name', 'Description', 'Image', 'Price', 'Quantity'];
 
 const AddProductForm = () => {
 
-    const [activeStep, setActiveStep] = useState<EAddProductSteps>(EAddProductSteps.NAME);
+    const [activeStep, setActiveStep] = useState<EProduct>(EProduct.NAME);
 
     const nameForm = useForm(mode);
     const descForm = useForm(mode);
     const priceForm = useForm(mode);
     const qntyForm = useForm(mode);
+    const imageForm = useForm(mode);
 
     const forms = {
-        0: nameForm,
-        1: descForm,
-        2: priceForm,
-        3: qntyForm
+        [EProduct.NAME]: nameForm,
+        [EProduct.DESC]: descForm,
+        [EProduct.IMAGE]: imageForm,
+        [EProduct.PRICE]: priceForm,
+        [EProduct.QUANTITY]: qntyForm
     }
+
 
     const onSubmit = (data: any) => {
         console.log("Success: ", data);
-        if (activeStep === EAddProductSteps.QUANTITY) {
-            console.log("Last step done");
+        if (activeStep === EProduct.QUANTITY) {
+            const productInfo = {
+                name: nameForm.getValues().name,
+                desc: descForm.getValues().desc,
+                price: priceForm.getValues().price,
+                quantity: qntyForm.getValues().quantity,
+                image: imageForm.getValues().image
+            }
+
+            console.log(productInfo);
             return;
         }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);

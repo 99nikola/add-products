@@ -1,20 +1,35 @@
 import { Step, StepLabel, Stepper } from "@mui/material"
-import { memo } from "react"
-import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct"
+import React, { memo, useCallback, useMemo } from "react"
+import { EProduct } from "../../typescript/interfaces/StepAddProduct"
 
 interface StepperLabelProps {
     steps: Array<string>
-    activeStep: EAddProductSteps
+    activeStep: EProduct,
+    setActiveStep: React.Dispatch<React.SetStateAction<EProduct>>
 }
 
 const StepperLabel: React.FC<StepperLabelProps> = (props) => {
+
+    const onClickChangeStep = useCallback((step: EProduct) => {
+        if (step > props.activeStep)
+            return;
+            
+        props.setActiveStep(step);
+    }, [props.activeStep]);
+
+    const Steps = useMemo(() =>(
+        props.steps.map((label, index) => (
+            <Step key={label}>
+                <StepLabel
+                    onClick={() => onClickChangeStep(index)}
+                    >{label}</StepLabel>
+            </Step>
+        ))
+    ), [props.steps, onClickChangeStep]);
+
     return (
         <Stepper activeStep={props.activeStep}>
-            {props.steps.map(label => (
-                <Step key={label}>
-                    <StepLabel>{label}</StepLabel>
-                </Step>
-            ))}
+            {Steps}
         </Stepper>
     )
 }

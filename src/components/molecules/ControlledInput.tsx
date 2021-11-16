@@ -1,35 +1,45 @@
-import { memo } from "react";
-import { Control, Controller } from "react-hook-form"
+import { memo, useCallback } from "react";
+import { Controller, ControllerFieldState, ControllerRenderProps, FieldValues, UseFormStateReturn } from "react-hook-form"
 import InputField, { InputFieldProps } from "../atoms/InputField"
 
 export interface ControlledInputProps extends InputFieldProps {
     name: any,
-    control: any,
+    control?: any,
     rules?: any,
     defaultValue?: any
+    Componenet: any,
 }
 
-const ControlledInput: React.FC<ControlledInputProps> = ({ name, control, rules, defaultValue, ...rest }) => {
+interface RenderProp {
+    field: ControllerRenderProps<FieldValues, any>,
+    fieldState: ControllerFieldState,
+    formState: UseFormStateReturn<FieldValues>,
+}
+
+const InputController: React.FC<ControlledInputProps> = ({ name, control, rules, defaultValue, Componenet, ...rest }) => {
+
+    const handleRender = (render: RenderProp) => {
+        return (
+            <Componenet 
+                {...rest}
+                value={render.field.value}
+                onChange={render.field.onChange}
+                error={Boolean(render.fieldState.error)}
+                helperText={render.fieldState.error?.message || ''}
+                />
+        );
+    }
+
     return (
         <Controller 
             name={name}
             control={control}
             rules={rules}
             defaultValue={defaultValue}
-            render={({ field, fieldState }) => {
-                return (
-                    <InputField 
-                        {...rest}
-                        value={field.value}
-                        onChange={field.onChange}
-                        error={Boolean(fieldState.error)}
-                        helperText={fieldState.error?.message || ''}
-                        />
-                );
-            }}  
+            render={handleRender}  
             />
             
     )
 }
 
-export default ControlledInput;
+export default memo(InputController);

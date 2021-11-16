@@ -1,17 +1,21 @@
-import { FieldValues, UseFormReturn } from "react-hook-form";
 import { ControlledInputProps } from "../../components/molecules/ControlledInput";
 
-export enum EAddProductSteps {
+export enum EProduct {
     NAME,
-    DESCRIPTION,
+    DESC,
+    IMAGE,
     PRICE,
     QUANTITY 
 }
 
-// export interface MultipleForm {
-//     Record<EAddProductSteps, UseFormReturn<FieldValues, object>>
-// }
-
-export interface StepProps extends Omit<ControlledInputProps, "control" | "name"> {
+export interface IProduct {
+    name: string,
+    desc: string,
+    image: any,
+    price: number,
+    quantity: number
+}
+ 
+export interface StepProps extends Omit<ControlledInputProps, "control" | "name" | "Componenet"> {
     form: any
 }

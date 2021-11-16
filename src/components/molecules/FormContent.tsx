@@ -2,14 +2,14 @@ import { Grid } from "@mui/material"
 import { memo } from "react"
 import { FieldValues, UseFormReturn } from "react-hook-form"
 import FactoryAddProductSteps from "../../factory/FactoryAddProductSteps"
-import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct"
+import { EProduct } from "../../typescript/interfaces/StepAddProduct"
 import Button from "../atoms/Button"
 
 export interface FormContentProps {
-    activeStep: EAddProductSteps,
+    activeStep: EProduct,
     handleBack: React.MouseEventHandler<HTMLButtonElement>,
     finishOrNextText: string,
-    forms: Record<EAddProductSteps, UseFormReturn<FieldValues, object>>
+    forms: Record<EProduct, UseFormReturn<FieldValues, object>>
 }
 
 const FormContent: React.FC<FormContentProps> = (props) => {

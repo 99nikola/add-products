@@ -1,14 +1,15 @@
-import { TextField } from "@mui/material";
+import { TextFieldProps } from "@material-ui/core";
+import { StandardTextFieldProps, TextField } from "@mui/material";
 
 
 export interface InputFieldProps {
-    type?: string,
     variant?: "outlined" | "standard" | "filled"
+    type?: string,
     label?: string,
     onChange?: any,
     error?: any,
     helperText?: string,
-    value?: string
+    value?: string,
 }
 
 const InputField: React.FC<InputFieldProps> = (props) => {

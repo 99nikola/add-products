@@ -1,34 +1,42 @@
 import { memo } from "react";
-import { EAddProductSteps } from "../typescript/interfaces/StepAddProduct";
-import { NameStep, PriceStep, DescStep, QuantityStep } from "../components/molecules/Steps/Steps";
+import { EProduct } from "../typescript/interfaces/StepAddProduct";
+import { NameStep, PriceStep, DescStep, QuantityStep, ImageStep } from "../components/molecules/Steps/Steps";
 import { FieldValues, UseFormReturn } from "react-hook-form";
 
 interface FactoryAddProductStepsProps {
-    step: EAddProductSteps,
-    forms: Record<EAddProductSteps, UseFormReturn<FieldValues, object>>
+    step: EProduct,
+    forms: Record<EProduct, UseFormReturn<FieldValues, object>>
 }
 
 const FactoryAddProductSteps: React.FC<FactoryAddProductStepsProps> = (props) => {
+    
+    const form = props.forms[props.step];
+
     switch (props.step) {
-        case EAddProductSteps.NAME:
+        case EProduct.NAME:
             return (
-                <NameStep form={props.forms[0]} />
+                <NameStep form={form} />
             );
         
-        case EAddProductSteps.DESCRIPTION:
+        case EProduct.DESC:
             return (
-                <DescStep form={props.forms[1]} />
+                <DescStep form={form} />
             );
 
-        case EAddProductSteps.PRICE:
+        case EProduct.PRICE:
             return (
-                <PriceStep form={props.forms[2]} />
+                <PriceStep form={form} />
             );
 
-        case EAddProductSteps.QUANTITY:
+        case EProduct.QUANTITY:
             return (
-                <QuantityStep form={props.forms[3]} />
+                <QuantityStep form={form} />
             );
+        
+        case EProduct.IMAGE: 
+            return (
+                <ImageStep form={form} />
+            )
     }
 }
 

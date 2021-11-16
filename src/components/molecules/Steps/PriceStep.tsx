@@ -1,20 +1,22 @@
 import { Grid } from "@mui/material"
 import { memo } from "react";
-import ControlledInput from "../ControlledInput";
+import InputController from "../ControlledInput";
 import { RequiredRule } from "../../../rules/AddProduct";
 import { StepProps } from "../../../typescript/interfaces/StepAddProduct";
+import InputField from "../../atoms/InputField";
 
 
 const PriceStep: React.FC<StepProps> = (props) => {
     return (
         <Grid item>
-            <ControlledInput
+            <InputController
                 {...props}
                 name="price"
                 control={props.form.control}
                 rules={RequiredRule}
                 type="number"
                 defaultValue=""
+                Componenet={InputField}
                 />
         </Grid>
     )
