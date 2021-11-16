@@ -34,7 +34,13 @@ const AddProductForm = () => {
 
 
     const onSubmit = (data: any) => {
-        console.log("Success: ", data);
+
+        if (activeStep === EProduct.IMAGE) {
+            console.log(typeof imageForm.getValues().image);
+        }
+
+        console.log("Success: ", activeStep, data);
+
         if (activeStep === EProduct.QUANTITY) {
             const productInfo = {
                 name: nameForm.getValues().name,

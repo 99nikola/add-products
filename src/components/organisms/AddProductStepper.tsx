@@ -18,10 +18,6 @@ const AddProductStepper: React.FC<AddProductsStepperProps> = (props) => {
         props.setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
-        props.setActiveStep(0);
-    };
-
     return (
         <Grid container item direction="column" xs={12} padding={3}>
             <StepperLabel 

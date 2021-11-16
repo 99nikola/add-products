@@ -1,9 +1,8 @@
 import { Grid } from "@mui/material"
 import { RequiredRule } from "../../../rules/AddProduct"
 import { StepProps } from "../../../typescript/interfaces/StepAddProduct"
-import InputField from "../../atoms/InputField"
-import UploadInput from "../../atoms/UploadInput"
-import InputController from "../ControlledInput"
+import UploadInput from "../UploadInput"
+import InputController from "../InputController"
 
 const ImageStep: React.FC<StepProps> = (props) => {
     return (

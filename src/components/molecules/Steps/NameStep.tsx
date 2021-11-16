@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material"
 import { memo } from "react";
-import InputController from "../ControlledInput";
+import InputController from "../InputController";
 import { RequiredRule } from "../../../rules/AddProduct";
 import { StepProps } from "../../../typescript/interfaces/StepAddProduct";
 import InputField from "../../atoms/InputField";

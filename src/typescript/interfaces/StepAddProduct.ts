@@ -1,4 +1,4 @@
-import { ControlledInputProps } from "../../components/molecules/ControlledInput";
+import { ControlledInputProps } from "../../components/molecules/InputController";
 
 export enum EProduct {
     NAME,
