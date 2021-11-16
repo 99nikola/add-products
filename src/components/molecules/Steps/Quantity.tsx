@@ -13,6 +13,7 @@ const QuantityStep: React.FC<StepProps> = (props) => {
                 control={props.form.control}
                 rules={RequiredRule}
                 type="number"
+                defaultValue=""
                 />
         </Grid>
     )

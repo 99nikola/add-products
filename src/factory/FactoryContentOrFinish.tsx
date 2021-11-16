@@ -19,8 +19,6 @@ const FactoryContentOrFinish: React.FC<FactoryContentOrFinishProps> = (props) =>
                 <FormContent 
                     activeStep={props.activeStep}
                     handleBack={props.handleBack}
-                    handleNext={props.handleNext}
-                    disableNext={props.disableNext}
                     finishOrNextText={props.finishOrNextText}
                     forms={props.forms}
                     />

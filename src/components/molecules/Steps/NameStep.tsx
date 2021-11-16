@@ -13,6 +13,7 @@ const NameStep: React.FC<StepProps> = (props) => {
                 name="name"
                 rules={RequiredRule}
                 control={props.form.control}
+                defaultValue=""
                 />
         </Grid>
     )

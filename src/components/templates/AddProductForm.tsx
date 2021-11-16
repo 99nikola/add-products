@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
-import { FormProvider, useForm, ValidationMode } from "react-hook-form";
-import { EAddProductSteps, MultipleForm } from "../../typescript/interfaces/StepAddProduct";
+import { useForm, ValidationMode } from "react-hook-form";
+import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct";
 import AddProductStepper from "../organisms/AddProductStepper";
 
 const mode: {
@@ -18,53 +18,25 @@ const AddProductForm = () => {
 
     const [activeStep, setActiveStep] = useState<EAddProductSteps>(EAddProductSteps.NAME);
 
-    const nameForm = useForm({
-        ...mode,
-        defaultValues: {
-            name: ""
-        }
-    });
-    const descForm = useForm({
-        ...mode,
-        defaultValues: {
-            desc: ""
-        }
-    });
-    const priceForm = useForm({
-        ...mode,
-        defaultValues: {
-            price: ""
-        }
-    });
-    const qntyForm = useForm({
-        ...mode,
-        defaultValues: {
-            qnty: ""
-        }
-    });
+    const nameForm = useForm(mode);
+    const descForm = useForm(mode);
+    const priceForm = useForm(mode);
+    const qntyForm = useForm(mode);
 
-    const forms: MultipleForm = {
+    const forms = {
         0: nameForm,
         1: descForm,
         2: priceForm,
         3: qntyForm
     }
 
-    const methods = useForm({ 
-        mode: "onSubmit",
-        reValidateMode: "onChange",
-        defaultValues: {
-          name: "",
-          desc: "",
-          price: "",
-          quantity: "",
-        },
-        criteriaMode: "firstError",
-        shouldFocusError: true,
-    });
-
     const onSubmit = (data: any) => {
         console.log("Success: ", data);
+        if (activeStep === EAddProductSteps.QUANTITY) {
+            console.log("Last step done");
+            return;
+        }
+        setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
 
     const onError = (error: any) => {
@@ -72,20 +44,18 @@ const AddProductForm = () => {
     }
 
     return (
-        <FormProvider {...methods}>
-            <form onSubmit={methods.handleSubmit(onSubmit, onError)}>
-                <Grid container justifyContent="center">
-                    <Grid container item xs={6}>
-                        <AddProductStepper 
-                            activeStep={activeStep}
-                            setActiveStep={setActiveStep}
-                            steps={steps}
-                            forms={forms}
-                            />
-                    </Grid>
+        <form onSubmit={forms[activeStep].handleSubmit(onSubmit, onError)}>
+            <Grid container justifyContent="center">
+                <Grid container item xs={6}>
+                    <AddProductStepper 
+                        activeStep={activeStep}
+                        setActiveStep={setActiveStep}
+                        steps={steps}
+                        forms={forms}
+                        />
                 </Grid>
-            </form>
-        </FormProvider>
+            </Grid>
+        </form>
     )
 }
 

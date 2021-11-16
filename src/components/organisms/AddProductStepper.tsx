@@ -1,7 +1,7 @@
 import { Grid } from "@mui/material";
 import { memo } from "react";
-import { EAddProductSteps, MultipleForm } from "../../typescript/interfaces/StepAddProduct";
-import { UseFormReturn, useFormState } from "react-hook-form";
+import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct";
+import { FieldValues, UseFormReturn, useFormState } from "react-hook-form";
 import StepperLabel from "../molecules/StepperLabel";
 import FactoryContentOrFinish from "../../factory/FactoryContentOrFinish";
 
@@ -9,16 +9,12 @@ interface AddProductsStepperProps {
     activeStep: EAddProductSteps,
     setActiveStep: React.Dispatch<React.SetStateAction<EAddProductSteps>>,
     steps: Array<string>,
-    forms: MultipleForm
+    forms: Record<EAddProductSteps, UseFormReturn<FieldValues, object>>
 }
 
 const AddProductStepper: React.FC<AddProductsStepperProps> = (props) => {
 
-    const formState = props.forms[props.activeStep].formState;
-
-    const handleNext = () => {
-        props.setActiveStep((prevActiveStep) => prevActiveStep + 1);
-    };
+    // const formState =  props.forms[props.activeStep].formState;
 
     const handleBack = () => {
         props.setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -38,10 +34,8 @@ const AddProductStepper: React.FC<AddProductsStepperProps> = (props) => {
             <FactoryContentOrFinish 
                 isFinish={props.activeStep === props.steps.length}
                 handleReset={handleReset}
-                handleNext={handleNext}
                 handleBack={handleBack}
                 activeStep={props.activeStep}
-                disableNext={!formState.isValid}
                 finishOrNextText={props.activeStep === props.steps.length - 1 ? 'Finish' : 'Next'}
                 forms={props.forms}
                 />

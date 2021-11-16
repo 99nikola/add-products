@@ -1,10 +1,11 @@
 import { memo } from "react";
-import { EAddProductSteps, MultipleForm } from "../typescript/interfaces/StepAddProduct";
+import { EAddProductSteps } from "../typescript/interfaces/StepAddProduct";
 import { NameStep, PriceStep, DescStep, QuantityStep } from "../components/molecules/Steps/Steps";
+import { FieldValues, UseFormReturn } from "react-hook-form";
 
 interface FactoryAddProductStepsProps {
     step: EAddProductSteps,
-    forms: MultipleForm
+    forms: Record<EAddProductSteps, UseFormReturn<FieldValues, object>>
 }
 
 const FactoryAddProductSteps: React.FC<FactoryAddProductStepsProps> = (props) => {

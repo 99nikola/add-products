@@ -13,6 +13,7 @@ const DescStep: React.FC<StepProps> = (props) => {
                 name="desc"
                 rules={RequiredRule}
                 control={props.form.control}
+                defaultValue=""
                 />
         </Grid>
     )

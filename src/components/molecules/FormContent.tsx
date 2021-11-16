@@ -2,16 +2,14 @@ import { Grid } from "@mui/material"
 import { memo } from "react"
 import { FieldValues, UseFormReturn } from "react-hook-form"
 import FactoryAddProductSteps from "../../factory/FactoryAddProductSteps"
-import { EAddProductSteps, MultipleForm } from "../../typescript/interfaces/StepAddProduct"
+import { EAddProductSteps } from "../../typescript/interfaces/StepAddProduct"
 import Button from "../atoms/Button"
 
 export interface FormContentProps {
     activeStep: EAddProductSteps,
     handleBack: React.MouseEventHandler<HTMLButtonElement>,
-    handleNext: React.MouseEventHandler<HTMLButtonElement> 
-    disableNext: boolean,
     finishOrNextText: string,
-    forms: MultipleForm
+    forms: Record<EAddProductSteps, UseFormReturn<FieldValues, object>>
 }
 
 const FormContent: React.FC<FormContentProps> = (props) => {
@@ -33,9 +31,9 @@ const FormContent: React.FC<FormContentProps> = (props) => {
                         />
                 </Grid>
                 <Grid item margin={1}>
-                    <Button onClick={props.handleNext}
-                        disabled={props.disableNext}
+                    <Button
                         text={props.finishOrNextText}
+                        type="submit"
                         />
                 </Grid>
             </Grid>
