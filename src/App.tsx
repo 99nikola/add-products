@@ -17,12 +17,12 @@ const App = () => {
   const [ 
     ProductFormPage, 
     HomePage
-  ] = useMemo(() => [
-    <ProductForm 
-        setProducts={setProducts} 
-        />,
-    <Home />
-  ], []);
+  	] = useMemo(() => [
+		<ProductForm 
+			setProducts={setProducts} 
+			/>,
+		<Home />
+	], []);
 
   const ProductsPage = useMemo(() => (
     <Products 
@@ -33,8 +33,8 @@ const App = () => {
 
   return (
 	<div className="container">
+		<input id="sidebar" type="checkbox" />
 		<div className="sidebar-container">
-			<input id="sidebar" type="checkbox" />
 			<Sidebar /> 
 		</div>
 		<Routes>
