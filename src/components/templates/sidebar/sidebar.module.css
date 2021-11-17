@@ -5,9 +5,9 @@
 }
 
 .products {
-    border: 1px solid rgb(71, 64, 64);
+    border: 1px solid rgb(66, 61, 61);
     border-radius: 6px;
-    background-color: rgb(175, 126, 108);
+    background-color: rgb(77, 100, 119);
     margin: 10px;
     padding: 5px;
     color: whitesmoke;
@@ -16,7 +16,7 @@
 }
 
 .products:active {
-    background-color: rgb(139, 107, 95);
+    background-color: rgb(46, 65, 80);
 }
 
 
@@ -25,7 +25,7 @@
 }
 
 .plusIcon {
-    color: rgb(133, 108, 99);
+    color: rgb(46, 65, 80);
     margin-left: 20px;
     margin-right: 5px;
     width: 30px;
