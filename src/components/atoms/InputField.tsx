@@ -8,6 +8,7 @@ export interface InputFieldProps {
     error?: any,
     helperText?: string,
     value?: string,
+    autoFocus?: boolean
 }
 
 const InputField: React.FC<InputFieldProps> = (props) => {
@@ -21,6 +22,7 @@ const InputField: React.FC<InputFieldProps> = (props) => {
             error={props.error}
             helperText={props.helperText}
             value={props.value}
+            autoFocus={props.autoFocus}
             />
     );
 }

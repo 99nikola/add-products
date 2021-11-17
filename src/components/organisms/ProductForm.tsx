@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
 import { IProduct } from "../../typescript/interfaces/StepAddProduct";
 import DescStep from "../molecules/Steps/DescStep";
@@ -14,7 +15,7 @@ interface ProductFormProps {
 const ProductForm: React.FC<ProductFormProps> = (props) => {
     return (
         <>
-            <NameStep form={props.form} />
+            <NameStep form={props.form} autoFocus/>
             <DescStep form={props.form} />
             <ImageStep form={props.form} />
             <PriceStep form={props.form} />
@@ -23,4 +24,4 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
     )
 }
 
-export default ProductForm
+export default memo(ProductForm);

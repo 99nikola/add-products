@@ -1,5 +1,5 @@
 import { Dialog, DialogTitle, DialogContent, TextField, DialogContentText, DialogActions } from "@mui/material";
-import React, { useState } from "react"
+import React, { memo, useState } from "react"
 import Button from "../atoms/Button";
 import EditIcon from '@mui/icons-material/Edit';
 import { IProduct } from "../../typescript/interfaces/StepAddProduct";
@@ -65,4 +65,4 @@ const FormDialog: React.FC<FormDialogProps> = (props) => {
     )
 }
 
-export default FormDialog
+export default memo(FormDialog);

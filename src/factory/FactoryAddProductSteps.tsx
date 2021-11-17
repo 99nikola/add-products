@@ -15,27 +15,27 @@ const FactoryAddProductSteps: React.FC<FactoryAddProductStepsProps> = (props) =>
     switch (props.step) {
         case EProduct.NAME:
             return (
-                <NameStep form={form} />
+                <NameStep form={form} autoFocus/>
             );
         
         case EProduct.DESC:
             return (
-                <DescStep form={form} />
+                <DescStep form={form} autoFocus/>
             );
 
         case EProduct.PRICE:
             return (
-                <PriceStep form={form} />
+                <PriceStep form={form} autoFocus/>
             );
 
         case EProduct.QUANTITY:
             return (
-                <QuantityStep form={form} />
+                <QuantityStep form={form} autoFocus/>
             );
         
         case EProduct.IMAGE: 
             return (
-                <ImageStep form={form} />
+                <ImageStep form={form} autoFocus/>
             )
     }
 }
