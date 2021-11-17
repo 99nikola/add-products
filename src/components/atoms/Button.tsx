@@ -19,7 +19,6 @@ const Button: React.FC<ButtonProps> = (props) => {
             type={props.type}
             onClick={props.onClick}
             disabled={props.disabled}
-            style={{ textDecoration: "none" }}
             >
             {props.text}
         </MButton>

@@ -1,4 +1,5 @@
 import { TableCell, TableHead, TableRow } from "@mui/material"
+import { memo } from "react";
 
 const ProductsTableHeader = () => {
     return (
@@ -15,4 +16,4 @@ const ProductsTableHeader = () => {
     )
 }
 
-export default ProductsTableHeader
+export default memo(ProductsTableHeader);
