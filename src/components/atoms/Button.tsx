@@ -9,6 +9,7 @@ interface ButtonProps {
     text?: string,
     onClick?: React.MouseEventHandler<HTMLButtonElement>,
     disabled?: boolean
+    children?: any
 }
 
 const Button: React.FC<ButtonProps> = (props) => {
@@ -20,7 +21,7 @@ const Button: React.FC<ButtonProps> = (props) => {
             onClick={props.onClick}
             disabled={props.disabled}
             >
-            {props.text}
+            {props.children}
         </MButton>
     );
 }

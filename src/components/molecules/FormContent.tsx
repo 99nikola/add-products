@@ -26,14 +26,12 @@ const FormContent: React.FC<FormContentProps> = (props) => {
                         color="inherit"
                         disabled={props.activeStep === 0}
                         onClick={props.handleBack}
-                        text="Back"
-                        />
+                        >Back</Button>
                 </Grid>
                 <Grid item margin={1}>
                     <Button
-                        text={props.finishOrNextText}
                         type="submit"
-                        />
+                        >{props.finishOrNextText}</Button>
                 </Grid>
             </Grid>
         </Grid>

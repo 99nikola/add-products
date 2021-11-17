@@ -1,0 +1,44 @@
+@import url('./static/reset.css');
+
+.container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+
+.sidebar {
+    height: 100%;
+    border-right: 1px solid rgb(97, 97, 97);
+    background-color: rgb(247, 242, 239);
+    position: fixed;
+    top: 0%;
+    right: 100%;
+
+    transition-property: transform;
+    transition-duration: 300ms;
+}
+
+#sidebar {
+    display: none;
+}
+
+#sidebar:checked + .sidebar {
+    transform: translateX(100%);
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 0 1px 1px rgb(61, 60, 60);
+    border-radius: 6px;
+    color: whitesmoke;
+    padding: 2px;
+    background-color: lightslategray;
+}
+
+.menu-container {
+    width: 80%;
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px;
+}

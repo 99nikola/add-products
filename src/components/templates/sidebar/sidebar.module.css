@@ -1,0 +1,44 @@
+.container {
+    position: fixed;
+    border: 1px solid black;
+    left: -100%;
+}
+
+.products {
+    border: 1px solid rgb(71, 64, 64);
+    border-radius: 6px;
+    background-color: rgb(175, 126, 108);
+    margin: 10px;
+    padding: 5px;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+}
+
+.products:active {
+    background-color: rgb(139, 107, 95);
+}
+
+
+.link {
+    text-decoration: none;
+}
+
+.plusIcon {
+    color: rgb(133, 108, 99);
+    margin-left: 20px;
+    margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: rgb(236, 232, 230);
+
+    transition-property: transform;
+    transition-duration: 50ms;
+}
+
+.plusIcon:hover {
+    transform: scale(1.1);
+}
+

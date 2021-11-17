@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import Button from '../atoms/Button';
+import { memo } from 'react';
 import ProductsTable, { ProductsTableProps } from '../templates/ProductsTable';
 
 interface ProductsProps extends ProductsTableProps {
@@ -7,19 +6,11 @@ interface ProductsProps extends ProductsTableProps {
 
 const Products: React.FC<ProductsProps> = (props) => {
   return (
-	<div>
-		<ProductsTable 
-			products={props.products}
-			setProducts={props.setProducts}
-			/>
-		<Link 
-            style={{ textDecoration: "none" }}
-			to="/products/new"
-			>
-			<Button text="Add new product" />
-		</Link>
-	</div>
+	<ProductsTable 
+		products={props.products}
+		setProducts={props.setProducts}
+		/>
   );
 }
 
-export default Products;
+export default memo(Products);

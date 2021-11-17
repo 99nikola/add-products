@@ -1,9 +1,12 @@
 import { useEffect, useMemo, useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import Home from './components/pages/Home';
 import ProductForm from './components/pages/ProductForm';
 import Products from './components/pages/Products';
+import Sidebar from './components/templates/sidebar/Sidebar';
 import { IProduct } from "./typescript/interfaces/StepAddProduct";
+import "./app.css";
+import { ReactComponent as MenuMotionIcon } from "./res/menu-motion.svg";
 
 const DEFAUTL_PRODUCTS: IProduct[] = [];
 
@@ -29,11 +32,26 @@ const App = () => {
   ), [products]);
 
   return (
-    <Routes>
-      <Route path="/" element={HomePage}/>
-      <Route path="/products/new" element={ProductFormPage}/>
-      <Route path="/products" element={ProductsPage} />
-    </Routes>
+	<div className="container">
+		<div className="sidebar-container">
+			<input id="sidebar" type="checkbox" />
+			<Sidebar /> 
+		</div>
+		<Routes>
+			<Route path="/" element={HomePage}/>
+			<Route path="/products/new" element={ProductFormPage}/>
+			<Route path="/products" element={ProductsPage} />
+		</Routes>
+		
+		<div className="menu-container">
+			<label htmlFor="sidebar">
+				<MenuMotionIcon 
+					className="menu-icon"
+					/>
+			</label>
+		</div>
+			
+	</div>
   );
 }
 
