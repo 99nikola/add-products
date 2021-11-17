@@ -13,23 +13,17 @@
     color: whitesmoke;
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 
 .products:active {
     background-color: rgb(46, 65, 80);
 }
 
-
-.link {
-    text-decoration: none;
-}
-
-.plusIcon {
+.plus {
     color: rgb(46, 65, 80);
     margin-left: 20px;
     margin-right: 5px;
-    width: 30px;
-    height: 30px;
     border: 1px solid black;
     border-radius: 6px;
     background-color: rgb(236, 232, 230);
@@ -38,7 +32,12 @@
     transition-duration: 50ms;
 }
 
-.plusIcon:hover {
+.plusIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.plus:hover {
     transform: scale(1.1);
 }
 
