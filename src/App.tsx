@@ -26,8 +26,8 @@ const App = () => {
 
   const ProductsPage = useMemo(() => (
     <Products 
-      products={products}
-	  setProducts={setProducts}
+	    products={products}
+		setProducts={setProducts}
       />
   ), [products]);
 

@@ -1,12 +1,9 @@
 import { Link } from "react-router-dom"
+import FormDialog from "../organisms/FormDialog"
 //TEST
 const Home = () => {
     return (
         <div>
-            <h1>Home</h1>
-            <Link to="/products/new">
-                <h2>ProductFormPage</h2>
-            </Link>
             
         </div>
     )
