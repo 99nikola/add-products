@@ -17,7 +17,8 @@ export interface IProduct {
     desc: string,
     image: any,
     price: number,
-    quantity: number
+    quantity: number,
+    id: string
 }
  
 export interface StepProps extends Omit<ControlledInputProps, "control" | "name" | "Componenet"> {

@@ -1,8 +1,13 @@
-import AddProductForm from "../templates/AddProductForm"
+import { Link } from "@mui/material"
+import { IProduct } from "../../typescript/interfaces/StepAddProduct"
+import AddProductForm, { AddProductFormProps } from "../templates/AddProductForm"
 
-const ProductForm = () => {
+interface ProductFormProps extends AddProductFormProps {
+}
+
+const ProductForm: React.FC<ProductFormProps> = (props) => {
     return (
-        <AddProductForm />
+        <AddProductForm setProducts={props.setProducts} />
     )
 }
 

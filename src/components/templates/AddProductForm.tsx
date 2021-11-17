@@ -1,9 +1,11 @@
 import { Grid } from "@mui/material";
 import { useState } from "react";
 import { useForm, UseFormReturn, ValidationMode } from "react-hook-form";
-import { EProduct, EProductValues, IProductFormSteps } from "../../typescript/interfaces/StepAddProduct";
+import { EProduct, EProductValues, IProduct, IProductFormSteps } from "../../typescript/interfaces/StepAddProduct";
 import { ProductFormStepperContextProvider } from "../atoms/ProductFormStepperContext";
 import AddProductStepper from "../organisms/AddProductStepper";
+import { v4 as uuid } from "uuid";
+import { useNavigate } from "react-router-dom"
 
 const mode: {
     mode: keyof ValidationMode,
@@ -28,9 +30,14 @@ export interface ProductForms {
     [EProduct.QUANTITY]: UseFormReturn<QuantityStepForm, object>;
 }
 
-const AddProductForm: React.FC = () => {
+export interface AddProductFormProps {
+    setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
+}
+
+const AddProductForm: React.FC<AddProductFormProps> = (props) => {
 
     const [activeStep, setActiveStep] = useState<EProductValues>(EProduct.NAME);
+    const navigate = useNavigate();
 
     const nameForm = useForm<NameStepForm>({
         ...mode,
@@ -79,15 +86,21 @@ const AddProductForm: React.FC = () => {
         console.log("Success: ", activeStep, data);
 
         if (activeStep === EProduct.QUANTITY) {
-            const productInfo = {
+            const product: IProduct = {
                 name: nameForm.getValues().name,
                 desc: descForm.getValues().desc,
                 price: priceForm.getValues().price,
                 quantity: qntyForm.getValues().quantity,
-                image: imageForm.getValues().image
+                image: imageForm.getValues().image,
+                id: uuid()
             }
 
-            console.log(productInfo);
+            props.setProducts(products => [
+                ...products,
+                product
+            ]);
+
+            navigate("/products");
             return;
         }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
