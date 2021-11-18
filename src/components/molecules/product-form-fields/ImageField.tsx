@@ -1,18 +1,18 @@
 import { Grid } from "@mui/material"
 import React, { useMemo, useState } from "react"
 import { RequiredRule } from "../../../rules/AddProduct"
-import InputField from "../../atoms/InputField"
 import InputController, { InputControllerProps } from "../InputController"
 import Image from "../../atoms/Image";
 import UploadInput from "../UploadInput"
 
 interface ImageFieldProps extends Omit<InputControllerProps, "Componenet" | "name"> {
-    form: any
+    form: any,
+    images: string[]
 }
 
 const ImageField: React.FC<ImageFieldProps> = (props) => {
 
-    const [ images, setImages ] = useState<string[]>(props.form.getValues().images);
+    const [ images, setImages ] = useState<string[]>(props.images);
 
     const Images = useMemo(() => {
         return (

@@ -7,6 +7,7 @@ import AddProductStepper from "../organisms/AddProductStepper";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom"
 import { saveProducts } from "../../utils/localStorage";
+import { uploadFilesAndGetURLs } from "../../utils/firebase";
 
 const mode: {
     mode: keyof ValidationMode,
@@ -16,9 +17,9 @@ const mode: {
     reValidateMode: "onChange"
 }
 
-const steps: IProductFormSteps[] = ['about', 'image', 'price', 'quantity'];
+const steps: IProductFormSteps[] = ['about', 'images', 'price', 'quantity'];
 
-type ImageStepForm = {images: string[]};
+type ImageStepForm = {images: File[]};
 type AboutStepForm = {name: string; desc: string};
 type PriceStepForm = {price: number};
 type QuantityStepForm = {quantity: number};
@@ -74,33 +75,41 @@ const AddProductForm: React.FC<AddProductFormProps> = (props) => {
         [EProduct.QUANTITY]: qntyForm
     } as const;
 
-    const onSubmit = (data: any) => {
+    const onSubmit = async (data: any) => {
         console.log("Success: ", activeStep, data);
 
         if (activeStep === EProduct.QUANTITY) {
-            const product: IProduct = {
-                name: aboutForm.getValues().name,
-                desc: aboutForm.getValues().desc,
-                price: priceForm.getValues().price,
-                quantity: qntyForm.getValues().quantity,
-                images: imageForm.getValues().images,
-                id: uuid()
+            try {
+                const imageURLs = await uploadFilesAndGetURLs(imageForm.getValues().images, "/images");
+                console.log(imageURLs);
+
+                const product: IProduct = {
+                    name: aboutForm.getValues().name,
+                    desc: aboutForm.getValues().desc,
+                    price: priceForm.getValues().price,
+                    quantity: qntyForm.getValues().quantity,
+                    images: imageURLs,
+                    id: uuid()
+                }
+                console.log(product);
+    
+                props.setProducts(products => {
+                    const newProducts = [
+                        ...products,
+                        product
+                    ];
+    
+                    saveProducts(newProducts);
+                    
+                    return newProducts;
+                });
+    
+    
+                navigate("/products");
+            } catch (err) {
+                console.error(err);
             }
-            console.log(product);
 
-            props.setProducts(products => {
-                const newProducts = [
-                    ...products,
-                    product
-                ];
-
-                saveProducts(newProducts);
-                
-                return newProducts;
-            });
-
-
-            navigate("/products");
             return;
         }
         setActiveStep((prevActiveStep) => prevActiveStep + 1);

@@ -17,7 +17,7 @@ const ProductForm: React.FC<ProductFormProps> = (props) => {
         <>
             <NameField control={props.form.control} autoFocus/>
             <DescField control={props.form.control} />
-            <ImageField form={props.form} />
+            <ImageField form={props.form} images={props.product.images}/>
             <QuantityField control={props.form.control} />
             <PriceField control={props.form.control} />
         </>

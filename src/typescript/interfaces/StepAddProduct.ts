@@ -12,7 +12,7 @@ export type EProductValues = EProductType[EProductKeys];
 export interface IProduct {
     name: string,
     desc: string,
-    images: any,
+    images: string[],
     price: number,
     quantity: number,
     id: string
@@ -25,7 +25,7 @@ export interface StepProps {
 
 interface IProductForm {
     about: object
-    image: any,
+    images: any,
     price: number,
     quantity: number,
 }

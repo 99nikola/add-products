@@ -12,18 +12,11 @@ const UploadInput: React.FC<UploadProps> = (props) => {
 
     const onChange = async (e: any) => {
 
-        const fileToFirebaseURL = async (file: any) => {
-            const storageRef = app.storage().ref("/images");
-            const imageRef = storageRef.child(file.name);
-            await imageRef.put(file);
-            return await imageRef.getDownloadURL();
-        }
+        const files: File[] = Array.prototype.slice.call(e.target.files);
+        props.onChange(files);
 
-        const files = Array.prototype.slice.call(e.target.files);
-
-        const imageURLs = await Promise.all(files.map(fileToFirebaseURL));
-        props.setImages(imageURLs);
-        props.onChange(imageURLs);
+        const images = (await Promise.all(files.map(fileToDataURL)) as string[]);
+        props.setImages(images);
     }
 
     return (

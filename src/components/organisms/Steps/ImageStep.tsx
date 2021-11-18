@@ -8,7 +8,7 @@ const ImageStep: React.FC<StepProps> = (props) => {
             <Typography variant="h6" align="center">
                 Select your product image
             </Typography>
-            <ImageField form={props.form} autoFocus={props.autoFocus} />
+            <ImageField form={props.form} autoFocus={props.autoFocus} images={[]}/>
         </>
     )
 }
