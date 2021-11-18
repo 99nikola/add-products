@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { EProduct, EProductValues } from "../typescript/interfaces/StepAddProduct";
-import { PriceStep, QuantityStep, ImageStep, AboutStep } from "../components/molecules/Steps/Steps";
+import { PriceStep, QuantityStep, ImageStep, AboutStep } from "../components/organisms/Steps/Steps";
 import { useProductFormStepperContext } from "../components/atoms/ProductFormStepperContext";
 
 interface FactoryAddProductStepsProps {

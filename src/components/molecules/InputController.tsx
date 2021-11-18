@@ -2,7 +2,7 @@ import React, { memo, useCallback } from "react";
 import { Controller, ControllerFieldState, ControllerRenderProps, FieldValues, UseFormStateReturn } from "react-hook-form"
 import InputField, { InputFieldProps } from "../atoms/InputField"
 
-export interface ControlledInputProps extends InputFieldProps {
+export interface InputControllerProps extends InputFieldProps {
     name: any,
     control?: any,
     rules?: any,
@@ -17,7 +17,7 @@ interface RenderProp {
     formState: UseFormStateReturn<FieldValues>,
 }
 
-const InputController: React.FC<ControlledInputProps> = ({ name, control, rules, defaultValue, Componenet, ...rest }) => {
+const InputController: React.FC<InputControllerProps> = ({ name, control, rules, defaultValue, Componenet, ...rest }) => {
     const handleRender = (render: RenderProp) => {
         return (
             <Componenet 

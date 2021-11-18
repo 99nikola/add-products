@@ -1,10 +1,11 @@
 import { memo } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { IProduct } from "../../typescript/interfaces/StepAddProduct";
-import AboutStep from "../molecules/Steps/AboutStep";
-import ImageStep from "../molecules/Steps/ImageStep";
-import PriceStep from "../molecules/Steps/PriceStep";
-import { QuantityStep } from "../molecules/Steps/Steps";
+import DescField from "../molecules/product-form-fields/DescField";
+import ImageField from "../molecules/product-form-fields/ImageField";
+import NameField from "../molecules/product-form-fields/NameField";
+import PriceField from "../molecules/product-form-fields/PriceField";
+import QuantityField from "../molecules/product-form-fields/QuantityField";
 
 interface ProductFormProps {
     product: IProduct,
@@ -14,10 +15,11 @@ interface ProductFormProps {
 const ProductForm: React.FC<ProductFormProps> = (props) => {
     return (
         <>
-            <AboutStep form={props.form} autoFocus/>
-            <ImageStep form={props.form} />
-            <QuantityStep form={props.form} />
-            <PriceStep form={props.form} />
+            <NameField control={props.form.control} autoFocus/>
+            <DescField control={props.form.control} />
+            <ImageField form={props.form} />
+            <QuantityField control={props.form.control} />
+            <PriceField control={props.form.control} />
         </>
     )
 }

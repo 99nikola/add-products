@@ -45,10 +45,6 @@ const FormDialog: React.FC<FormDialogProps> = (props) => {
                     
                     <DialogContent>
                         <form onSubmit={form.handleSubmit(props.handleEditAndCloseDialog)}>
-                            <DialogContentText>
-                                Dialog text...
-                            </DialogContentText>
-
                             <ProductForm 
                                 product={props.product}
                                 form={form}

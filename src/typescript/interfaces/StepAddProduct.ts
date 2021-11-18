@@ -1,5 +1,3 @@
-import { ControlledInputProps } from "../../components/molecules/InputController";
-
 export enum EProduct {
     ABOUT,
     IMAGE,
@@ -20,8 +18,9 @@ export interface IProduct {
     id: string
 }
  
-export interface StepProps extends Omit<ControlledInputProps, "control" | "name" | "Componenet"> {
-    form: any
+export interface StepProps {
+    form: any,
+    autoFocus?: boolean
 }
 
 interface IProductForm {

@@ -1,10 +1,8 @@
 import { Grid } from "@mui/material";
 import { memo } from "react";
 import { EProduct, EProductValues } from "../../typescript/interfaces/StepAddProduct";
-import { FieldValues, UseFormReturn, useFormState } from "react-hook-form";
 import StepperLabel from "../molecules/StepperLabel";
-import FormContent from "../molecules/FormContent";
-import { ProductForms } from "../templates/AddProductForm";
+import FormContent from "./FormContent";
 
 interface AddProductsStepperProps {
     activeStep: EProductValues,

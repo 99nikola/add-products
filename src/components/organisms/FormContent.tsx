@@ -1,10 +1,8 @@
 import { Grid } from "@mui/material"
 import { memo } from "react"
-import { FieldValues, UseFormReturn } from "react-hook-form"
 import FactoryAddProductSteps from "../../factory/FactoryAddProductSteps"
-import { EProduct, EProductValues } from "../../typescript/interfaces/StepAddProduct"
+import {EProductValues } from "../../typescript/interfaces/StepAddProduct"
 import Button from "../atoms/Button"
-import { ProductForms } from "../templates/AddProductForm"
 
 export interface FormContentProps {
     activeStep: EProductValues,
