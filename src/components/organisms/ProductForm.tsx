@@ -1,9 +1,8 @@
 import { memo } from "react";
-import { SubmitHandler, useForm, UseFormReturn } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 import { IProduct } from "../../typescript/interfaces/StepAddProduct";
-import DescStep from "../molecules/Steps/DescStep";
+import AboutStep from "../molecules/Steps/AboutStep";
 import ImageStep from "../molecules/Steps/ImageStep";
-import NameStep from "../molecules/Steps/NameStep"
 import PriceStep from "../molecules/Steps/PriceStep";
 import { QuantityStep } from "../molecules/Steps/Steps";
 
@@ -15,11 +14,10 @@ interface ProductFormProps {
 const ProductForm: React.FC<ProductFormProps> = (props) => {
     return (
         <>
-            <NameStep form={props.form} autoFocus/>
-            <DescStep form={props.form} />
+            <AboutStep form={props.form} autoFocus/>
             <ImageStep form={props.form} />
-            <PriceStep form={props.form} />
             <QuantityStep form={props.form} />
+            <PriceStep form={props.form} />
         </>
     )
 }

@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { EProduct, EProductValues } from "../typescript/interfaces/StepAddProduct";
-import { NameStep, PriceStep, DescStep, QuantityStep, ImageStep } from "../components/molecules/Steps/Steps";
+import { PriceStep, QuantityStep, ImageStep, AboutStep } from "../components/molecules/Steps/Steps";
 import { useProductFormStepperContext } from "../components/atoms/ProductFormStepperContext";
 
 interface FactoryAddProductStepsProps {
@@ -13,16 +13,11 @@ const FactoryAddProductSteps: React.FC<FactoryAddProductStepsProps> = (props) =>
     const form = getForm(props.step);
 
     switch (props.step) {
-        case EProduct.NAME:
+        case EProduct.ABOUT:
             return (
-                <NameStep form={form} autoFocus/>
+                <AboutStep form={form} autoFocus/>
             );
-        
-        case EProduct.DESC:
-            return (
-                <DescStep form={form} autoFocus/>
-            );
-
+    
         case EProduct.PRICE:
             return (
                 <PriceStep form={form} autoFocus/>

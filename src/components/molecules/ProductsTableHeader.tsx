@@ -7,7 +7,7 @@ const ProductsTableHeader = () => {
           <TableRow>
             <TableCell>Product name</TableCell>
             <TableCell align="right">Description</TableCell>
-            {/* <TableCell align="right">Images</TableCell> */}
+            <TableCell align="right">Images</TableCell>
             <TableCell align="right">Price</TableCell>
             <TableCell align="right">Quantity</TableCell>
             <TableCell align="right">Remove</TableCell>

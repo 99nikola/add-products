@@ -1,8 +1,7 @@
 import { ControlledInputProps } from "../../components/molecules/InputController";
 
 export enum EProduct {
-    NAME,
-    DESC,
+    ABOUT,
     IMAGE,
     PRICE,
     QUANTITY 
@@ -25,4 +24,11 @@ export interface StepProps extends Omit<ControlledInputProps, "control" | "name"
     form: any
 }
 
-export type IProductFormSteps = keyof IProduct;
+interface IProductForm {
+    about: object
+    image: any,
+    price: number,
+    quantity: number,
+}
+
+export type IProductFormSteps = keyof IProductForm;

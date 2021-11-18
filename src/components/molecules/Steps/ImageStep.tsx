@@ -20,7 +20,7 @@ const ImageStep: React.FC<StepProps> = (props) => {
     }, [images]);
 
     return (
-        <Grid item>
+        <Grid item paddingTop={2}>
             <InputController
                 {...props}
                 setImages={setImages}

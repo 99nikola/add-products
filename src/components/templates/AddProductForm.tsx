@@ -15,16 +15,14 @@ const mode: {
     reValidateMode: "onChange"
 }
 
-const steps: IProductFormSteps[] = ['name', 'desc', 'image', 'price', 'quantity'];
+const steps: IProductFormSteps[] = ['about', 'image', 'price', 'quantity'];
 
 type ImageStepForm = {image: string[]};
-type NameStepForm = {name: string};
-type DescriptionStepForm = {desc: string};
+type AboutStepForm = {name: string; desc: string};
 type PriceStepForm = {price: number};
 type QuantityStepForm = {quantity: number};
 export interface ProductForms {
-    [EProduct.NAME]: UseFormReturn<NameStepForm, object>;
-    [EProduct.DESC]: UseFormReturn<DescriptionStepForm, object>;
+    [EProduct.ABOUT]: UseFormReturn<AboutStepForm, object>;
     [EProduct.PRICE]: UseFormReturn<PriceStepForm, object>;
     [EProduct.IMAGE]: UseFormReturn<ImageStepForm, object>;
     [EProduct.QUANTITY]: UseFormReturn<QuantityStepForm, object>;
@@ -36,19 +34,13 @@ export interface AddProductFormProps {
 
 const AddProductForm: React.FC<AddProductFormProps> = (props) => {
 
-    const [activeStep, setActiveStep] = useState<EProductValues>(EProduct.NAME);
+    const [activeStep, setActiveStep] = useState<EProductValues>(EProduct.ABOUT);
     const navigate = useNavigate();
 
-    const nameForm = useForm<NameStepForm>({
+    const aboutForm = useForm<AboutStepForm>({
         ...mode,
         defaultValues: {
-            name: ""
-        }
-    });
-
-    const descForm = useForm<DescriptionStepForm>({
-        ...mode,
-        defaultValues: {
+            name: "",
             desc: ""
         }
     });
@@ -75,8 +67,7 @@ const AddProductForm: React.FC<AddProductFormProps> = (props) => {
     });
 
     const forms: ProductForms = {
-        [EProduct.NAME]: nameForm,
-        [EProduct.DESC]: descForm,
+        [EProduct.ABOUT]: aboutForm,
         [EProduct.IMAGE]: imageForm,
         [EProduct.PRICE]: priceForm,
         [EProduct.QUANTITY]: qntyForm
@@ -87,8 +78,8 @@ const AddProductForm: React.FC<AddProductFormProps> = (props) => {
 
         if (activeStep === EProduct.QUANTITY) {
             const product: IProduct = {
-                name: nameForm.getValues().name,
-                desc: descForm.getValues().desc,
+                name: aboutForm.getValues().name,
+                desc: aboutForm.getValues().desc,
                 price: priceForm.getValues().price,
                 quantity: qntyForm.getValues().quantity,
                 image: imageForm.getValues().image,

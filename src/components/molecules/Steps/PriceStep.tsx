@@ -8,10 +8,11 @@ import InputField from "../../atoms/InputField";
 
 const PriceStep: React.FC<StepProps> = (props) => {
     return (
-        <Grid item>
+        <Grid item paddingTop={2} paddingBottom={2}>
             <InputController
                 {...props}
                 name="price"
+                label="Price"
                 control={props.form.control}
                 rules={RequiredRule}
                 type="number"

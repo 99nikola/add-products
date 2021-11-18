@@ -28,7 +28,7 @@ const ProductRow: React.FC<ProductRowProps> = (props) => {
         
         props.setProducts(products => products.filter(product => product.id !== props.product.id));
 
-    }, [props.product]);
+    }, [props.product.name, props.product.id]);
 
     const handleEditandCloseDialog = (editedProduct: IProduct) => {
 
@@ -50,9 +50,9 @@ const ProductRow: React.FC<ProductRowProps> = (props) => {
             {props.product.name}
             </TableCell>
             <TableCell align="right">{props.product.desc}</TableCell>
-            {/* <TableCell align="right">
-                <ImagePreview file={product.image[0]} />
-            </TableCell> */}
+            <TableCell align="right">
+                <ImagePreview file={props.product.image[0]} />
+            </TableCell>
             <TableCell align="right">{props.product.price}</TableCell>
             <TableCell align="right">{props.product.quantity}</TableCell>
             <TableCell align="right">

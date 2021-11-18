@@ -7,10 +7,11 @@ import InputField from "../../atoms/InputField";
 
 const QuantityStep: React.FC<StepProps> = (props) => {
     return (
-        <Grid item>
+        <Grid item paddingTop={2}>
             <InputController
                 {...props}
                 name="quantity"
+                label="QUantity"
                 control={props.form.control}
                 rules={RequiredRule}
                 type="number"
