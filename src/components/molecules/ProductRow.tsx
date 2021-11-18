@@ -5,6 +5,7 @@ import ImagePreview from "../atoms/Image";
 import { useCallback, memo, useState } from "react";
 import Button from "../atoms/Button";
 import FormDialog from "../organisms/FormDialog";
+import { saveProducts } from "../../utils/localStorage";
 
 interface ProductRowProps {
     product: IProduct,
@@ -26,16 +27,22 @@ const ProductRow: React.FC<ProductRowProps> = (props) => {
         if (!confirm)
             return;
         
-        props.setProducts(products => products.filter(product => product.id !== props.product.id));
+        props.setProducts(products => {
+            const filtered = products.filter(product => product.id !== props.product.id)
+            saveProducts(filtered);
+            return filtered;
+        });
 
     }, [props.product.name, props.product.id]);
 
     const handleEditandCloseDialog = (editedProduct: IProduct) => {
 
         props.setProducts(products => {
-            let clone = products.filter(product => product.id !== editedProduct.id);
-            clone.push(editedProduct);
-            return clone;
+            let filtered = products.filter(product => product.id !== editedProduct.id);
+            filtered.push(editedProduct);
+
+            saveProducts(filtered);
+            return filtered;
         });
 
         setOpenDialog(false);
@@ -51,7 +58,7 @@ const ProductRow: React.FC<ProductRowProps> = (props) => {
             </TableCell>
             <TableCell align="right">{props.product.desc}</TableCell>
             <TableCell align="right">
-                <ImagePreview file={props.product.image[0]} />
+                <ImagePreview file={props.product.images[0]} />
             </TableCell>
             <TableCell align="right">{props.product.price}</TableCell>
             <TableCell align="right">{props.product.quantity}</TableCell>

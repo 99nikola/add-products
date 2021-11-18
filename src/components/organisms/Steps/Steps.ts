@@ -1,5 +1,5 @@
 import PriceStep from "./PriceStep";
-import QuantityStep from "./Quantity";
+import QuantityStep from "./QuantityStep";
 import ImageStep from "./ImageStep";
 import AboutStep from "./AboutStep";
 

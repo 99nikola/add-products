@@ -12,7 +12,7 @@ interface ImageFieldProps extends Omit<InputControllerProps, "Componenet" | "nam
 
 const ImageField: React.FC<ImageFieldProps> = (props) => {
 
-    const [ images, setImages ] = useState<string[]>(props.form.getValues().image);
+    const [ images, setImages ] = useState<string[]>(props.form.getValues().images);
 
     const Images = useMemo(() => {
         return (
@@ -28,25 +28,13 @@ const ImageField: React.FC<ImageFieldProps> = (props) => {
             <InputController
                 {...props}
                 setImages={setImages}
-                name="image"
+                name="images"
                 rules={RequiredRule}
                 control={props.form.control}
                 defaultValue={[]}
                 Componenet={UploadInput}
                 />
             {Images}
-        </Grid>
-    );
-    return (
-        <Grid item paddingTop={1} paddingBottom={1}>
-            <InputController
-                name="desc"
-                label="Description"
-                rules={RequiredRule}
-                control={props.control}
-                defaultValue=""
-                Componenet={InputField}
-                />
         </Grid>
     );
 }

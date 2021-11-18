@@ -6,6 +6,7 @@ import { ProductFormStepperContextProvider } from "../atoms/ProductFormStepperCo
 import AddProductStepper from "../organisms/AddProductStepper";
 import { v4 as uuid } from "uuid";
 import { useNavigate } from "react-router-dom"
+import { saveProducts } from "../../utils/localStorage";
 
 const mode: {
     mode: keyof ValidationMode,
@@ -17,7 +18,7 @@ const mode: {
 
 const steps: IProductFormSteps[] = ['about', 'image', 'price', 'quantity'];
 
-type ImageStepForm = {image: string[]};
+type ImageStepForm = {images: string[]};
 type AboutStepForm = {name: string; desc: string};
 type PriceStepForm = {price: number};
 type QuantityStepForm = {quantity: number};
@@ -62,7 +63,7 @@ const AddProductForm: React.FC<AddProductFormProps> = (props) => {
     const imageForm = useForm<ImageStepForm>({
         ...mode,
         defaultValues: {
-            image: []
+            images: []
         }
     });
 
@@ -82,14 +83,22 @@ const AddProductForm: React.FC<AddProductFormProps> = (props) => {
                 desc: aboutForm.getValues().desc,
                 price: priceForm.getValues().price,
                 quantity: qntyForm.getValues().quantity,
-                image: imageForm.getValues().image,
+                images: imageForm.getValues().images,
                 id: uuid()
             }
+            console.log(product);
 
-            props.setProducts(products => [
-                ...products,
-                product
-            ]);
+            props.setProducts(products => {
+                const newProducts = [
+                    ...products,
+                    product
+                ];
+
+                saveProducts(newProducts);
+                
+                return newProducts;
+            });
+
 
             navigate("/products");
             return;

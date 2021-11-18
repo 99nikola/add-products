@@ -7,9 +7,9 @@ import DescField from "../../molecules/product-form-fields/DescField";
 const AboutStep: React.FC<StepProps> = (props) => {
     return (
         <Grid container item direction="column" >
-            <Typography variant="h6">
+            <Typography variant="h6" align="center">
                 Describe your product
-            </Typography> 
+            </Typography>  
             <NameField control={props.form.control} autoFocus={props.autoFocus} />
             <DescField control={props.form.control} />
         </Grid>

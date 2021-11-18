@@ -6,7 +6,7 @@ import QuantityField from "../../molecules/product-form-fields/QuantityField";
 const QuantityStep: React.FC<StepProps> = (props) => {
     return (
         <>
-            <Typography variant="h6">
+            <Typography variant="h6" align="center">
                 How many do you sell
             </Typography> 
             <QuantityField control={props.form.control} autoFocus={props.autoFocus} />

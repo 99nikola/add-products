@@ -7,7 +7,7 @@ import PriceField from "../../molecules/product-form-fields/PriceField";
 const PriceStep: React.FC<StepProps> = (props) => {
     return (
         <>
-            <Typography variant="h6">
+            <Typography variant="h6" align="center">
                 Define your price
             </Typography>
             <PriceField control={props.form.control} autoFocus={props.autoFocus}/>

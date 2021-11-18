@@ -1,5 +1,6 @@
 import { InputLabel } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
+import { app } from "../../firebase/base";
 import { fileToDataURL } from "../../utils/Utils";
 import { InputFieldProps } from "../atoms/InputField";
 
@@ -10,11 +11,19 @@ interface UploadProps extends InputFieldProps {
 const UploadInput: React.FC<UploadProps> = (props) => {
 
     const onChange = async (e: any) => {
+
+        const fileToFirebaseURL = async (file: any) => {
+            const storageRef = app.storage().ref("/images");
+            const imageRef = storageRef.child(file.name);
+            await imageRef.put(file);
+            return await imageRef.getDownloadURL();
+        }
+
         const files = Array.prototype.slice.call(e.target.files);
 
-        const images = (await Promise.all(files.map(fileToDataURL)) as string[]);
-        props.setImages(images);
-        props.onChange(images);
+        const imageURLs = await Promise.all(files.map(fileToFirebaseURL));
+        props.setImages(imageURLs);
+        props.onChange(imageURLs);
     }
 
     return (

@@ -7,31 +7,40 @@ import Sidebar from './components/templates/sidebar/Sidebar';
 import { IProduct } from "./typescript/interfaces/StepAddProduct";
 import "./app.css";
 import { ReactComponent as MenuMotionIcon } from "./res/menu-motion.svg";
+import { getProducts } from './utils/localStorage';
 
 const DEFAUTL_PRODUCTS: IProduct[] = [];
 
 const App = () => {
 
-  const [ products, setProducts ] = useState<IProduct[]>(DEFAUTL_PRODUCTS);
+	const [ products, setProducts ] = useState<IProduct[]>(DEFAUTL_PRODUCTS);
 
-  const [ 
-    ProductFormPage, 
-    HomePage
-  	] = useMemo(() => [
+	useEffect(() => {
+	const local: IProduct[] = getProducts();
+	if (!local)
+		return;
+
+	setProducts(local);
+	}, []);
+
+	const [ 
+	ProductFormPage, 
+	HomePage
+	] = useMemo(() => [
 		<ProductForm 
 			setProducts={setProducts} 
 			/>,
 		<Home />
 	], []);
 
-  const ProductsPage = useMemo(() => (
-    <Products 
-	    products={products}
+	const ProductsPage = useMemo(() => (
+	<Products 
+		products={products}
 		setProducts={setProducts}
-      />
-  ), [products]);
+		/>
+	), [products]);
 
-  return (
+	return (
 	<div className="container">
 		<input id="sidebar" type="checkbox" />
 		<div className="sidebar-container">
@@ -52,7 +61,7 @@ const App = () => {
 		</div>
 			
 	</div>
-  );
+	);
 }
 
 export default App;

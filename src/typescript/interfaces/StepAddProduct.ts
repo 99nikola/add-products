@@ -12,7 +12,7 @@ export type EProductValues = EProductType[EProductKeys];
 export interface IProduct {
     name: string,
     desc: string,
-    image: any,
+    images: any,
     price: number,
     quantity: number,
     id: string
