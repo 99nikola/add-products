@@ -1,13 +1,14 @@
-import { Paper, Table, TableBody, TableContainer } from "@mui/material";
 import { IProduct } from "../../typescript/interfaces/StepAddProduct";
-import ProductsTableHeader from "../molecules/ProductsTableHeader";
 import { useMemo, memo } from "react";
 import ProductRow from "../molecules/ProductRow";
+import Table from "../organisms/Table";
 
 export interface ProductsTableProps {
     products: IProduct[],
     setProducts: React.Dispatch<React.SetStateAction<IProduct[]>>
 }
+
+const header = [ "Product name", "Description", "Price", "Quantity", "Remove", "Edit" ];
 
 const ProductsTable: React.FC<ProductsTableProps> = (props) => {
 
@@ -22,14 +23,10 @@ const ProductsTable: React.FC<ProductsTableProps> = (props) => {
     ), [props.products]);
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 650 }} aria-label="simple table">
-                <ProductsTableHeader />
-                <TableBody>
-                    {ProductList}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <Table 
+            header={header}
+            body={ProductList}
+            />
     );
 }
 

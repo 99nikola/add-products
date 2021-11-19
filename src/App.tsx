@@ -8,6 +8,7 @@ import { IProduct } from "./typescript/interfaces/StepAddProduct";
 import "./app.css";
 import { ReactComponent as MenuMotionIcon } from "./res/menu-motion.svg";
 import { getProducts } from './utils/localStorage';
+import Users from './components/pages/Users';
 
 const DEFAUTL_PRODUCTS: IProduct[] = [];
 
@@ -25,12 +26,14 @@ const App = () => {
 
 	const [ 
 	ProductFormPage, 
-	HomePage
+	HomePage,
+	UsersPage
 	] = useMemo(() => [
 		<ProductForm 
 			setProducts={setProducts} 
 			/>,
-		<Home />
+		<Home />,
+		<Users />
 	], []);
 
 	const ProductsPage = useMemo(() => (
@@ -50,6 +53,7 @@ const App = () => {
 			<Route path="/" element={HomePage}/>
 			<Route path="/products/new" element={ProductFormPage}/>
 			<Route path="/products" element={ProductsPage} />
+			<Route path="/users" element={UsersPage} />
 		</Routes>
 		
 		<div className="menu-container">
