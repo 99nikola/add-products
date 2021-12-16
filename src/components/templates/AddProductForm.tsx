@@ -91,7 +91,6 @@ const AddProductForm: React.FC<AddProductFormProps> = (props) => {
                     images: imageURLs,
                     id: uuid()
                 }
-                console.log(product);
     
                 props.setProducts(products => {
                     const newProducts = [

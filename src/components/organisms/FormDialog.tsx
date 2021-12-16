@@ -1,5 +1,5 @@
-import { Dialog, DialogTitle, DialogContent, TextField, DialogContentText, DialogActions } from "@mui/material";
-import React, { memo, useState } from "react"
+import { Dialog, DialogTitle, DialogContent, DialogActions } from "@mui/material";
+import React, { memo } from "react"
 import Button from "../atoms/Button";
 import EditIcon from '@mui/icons-material/Edit';
 import { IProduct } from "../../typescript/interfaces/StepAddProduct";

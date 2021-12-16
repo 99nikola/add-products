@@ -1,6 +1,5 @@
 import { InputLabel } from "@mui/material";
 import React from "react";
-import { app } from "../../firebase/base";
 import { fileToDataURL } from "../../utils/Utils";
 import { InputFieldProps } from "../atoms/InputField";
 

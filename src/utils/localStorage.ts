@@ -5,15 +5,16 @@ export const saveProducts = (products: IProduct[]) => {
     localStorage.setItem("products", stringfiedProducts);
 }
 
-export const getProducts = () => {
+export const getProducts = (): IProduct[] | null => {
     try {
         const local = localStorage.getItem("products");
-        if (!local)
-            return;
+        if (local === null)
+            return null;
 
         const products = JSON.parse(local);
         return products;
     } catch (err) {
         console.error(err);
+        return null;
     }
 }

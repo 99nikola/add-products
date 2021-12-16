@@ -1,6 +1,6 @@
 import { app } from "../firebase/base";
 
-export const uploadFilesAndGetURLs = async (files: File[], path: string) => {
+export const uploadFilesAndGetURLs = (files: File[], path: string) => {
 
     const fileToFirebaseURL = async (file: File) => {
         const storageRef = app.storage().ref(path);
@@ -9,5 +9,5 @@ export const uploadFilesAndGetURLs = async (files: File[], path: string) => {
         return await imageRef.getDownloadURL();
     }
 
-    return await Promise.all(files.map(fileToFirebaseURL));
+    return Promise.all(files.map(fileToFirebaseURL));
 }
